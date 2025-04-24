@@ -20,6 +20,6 @@ public class KnightsQuest extends YaegerGame
 
     @Override
     public void setupScenes() {
-
+    	addScene(0, new TitleScene());
     }
 }
