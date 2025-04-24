@@ -3,9 +3,9 @@ module KnightsQuest {
 
     exports org.example;
 
-    //als je subfolders gaat gebruiken in resources.
-    //bijv. subfolder tiles
-    //Zet hier dan
-    // opens tiles;
+    opens images to hanyaeger;
+    opens sounds to hanyaeger;
+    opens fonts to hanyaeger;
+    opens sprites to hanyaeger;
 
 }

@@ -6,8 +6,7 @@ public class TitleScene extends StaticScene{
 
 	@Override
 	public void setupScene() {
-		setBackgroundAudio("time_for_adventure.mp3");
-		setBackgroundImage("titlescreen.jpg");
+		setBackgroundAudio("music/time_for_adventure.mp3");
 	}
 
 	@Override
