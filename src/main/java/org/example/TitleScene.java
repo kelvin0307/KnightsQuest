@@ -1,18 +1,45 @@
 package org.example;
 
+import org.example.entities.buttons.StartButton;
+
+import com.github.hanyaeger.api.AnchorPoint;
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.entities.impl.TextEntity;
 import com.github.hanyaeger.api.scenes.StaticScene;
 
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+
 public class TitleScene extends StaticScene{
+	private KnightsQuest knightsquest;
+	public TitleScene(KnightsQuest knightsquest) {
+		this.knightsquest = knightsquest;
+	}
 
 	@Override
 	public void setupScene() {
+		System.out.println(getClass().getResource("/images/titlescreen.jpg"));
+		setBackgroundImage("images/titlescreen.jpg");
 		setBackgroundAudio("music/time_for_adventure.mp3");
 	}
 
 	@Override
 	public void setupEntities() {
-		// TODO Auto-generated method stub
+		var knightsQuestText = new TextEntity(new Coordinate2D(getWidth() /2, getHeight() /2), "Knight's Quest");
+		knightsQuestText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
+		knightsQuestText.setFill(Color.ORANGE);
 		
+		System.out.println(getClass().getResource("/fonts/PixelOperator8.ttf"));
+		Font PixelOperator8 = Font.loadFont(
+			    getClass().getResource("/fonts/PixelOperator8-Bold.ttf").toExternalForm(), 
+			    80
+			);
+		knightsQuestText.setFont(PixelOperator8);
+		addEntity(knightsQuestText);
+		
+		var startButton = new StartButton(new Coordinate2D(getWidth() / 2, getHeight() / 1.5), knightsquest);
+		startButton.setAnchorPoint(AnchorPoint.BOTTOM_CENTER);
+		addEntity(startButton);
 	}
 
 }
