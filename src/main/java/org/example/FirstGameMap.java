@@ -2,6 +2,7 @@ package org.example;
 
 import com.github.hanyaeger.api.scenes.TileMap;
 
+
 @SuppressWarnings("serial")
 public class FirstGameMap extends TileMap {
 
