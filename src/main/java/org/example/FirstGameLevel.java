@@ -1,8 +1,7 @@
 package org.example;
 
 import org.example.entities.objects.Floor;
-import org.example.entities.tiles.GrassTile;
-
+import org.example.entities.tiles.PredefinedTileSets;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.ScrollableDynamicScene;
@@ -14,32 +13,28 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 	@Override
 	public void setupScene() {
 		setBackgroundColor(Color.BLACK);
+		setSize(new Size(1920, 1080));
 	}
 
 	@Override
 	public void setupEntities() {
-		var bottomFloor = new Floor(new Coordinate2D(0, 670), 
-				new Size(550, 10));
-		addEntity(bottomFloor);
-		
-		
-		int[][] map = {
-				{0, 0, 0, 0},
-				{0, 0, 0},
-				{0, 0, 0, 0}
-		};
-		
-		int tileSize = 64;
-		for(int y = 0; y < map.length; y++) {
-			for(int x = 0; x < map[y].length; x++) {
-				Coordinate2D location = new Coordinate2D(x * tileSize, y * tileSize);
-				Size size = new Size(tileSize, tileSize);
-				
-				if(map[y][x] == 0) {
-					addEntity(new GrassTile(location, size));
-				}
-			}
-		}
+	    var bottomFloor = new Floor(new Coordinate2D(0, 670), new Size(550, 10));
+	    addEntity(bottomFloor);
+
+	    for (var tile : PredefinedTileSets.hoofdVloer()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.opstapLinks()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.middenPlatform()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.hogeSprong()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.rechterPlateau()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.trapOmhoog()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.bovenstePlatform()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.gatInDeGrond()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.zwevendPlatform()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.langeSprong()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.rechtsKlim()) addEntity(tile);
+	    for (var tile : PredefinedTileSets.finalePlatform()) addEntity(tile);
+
 	}
+
 
 }
