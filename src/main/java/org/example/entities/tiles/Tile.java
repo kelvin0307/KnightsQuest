@@ -1,5 +1,13 @@
 package org.example.entities.tiles;
 
-public class Tile {
+import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.impl.SpriteEntity;
+
+public class Tile extends SpriteEntity{
+
+	public Tile(String resource, Coordinate2D initialLocation, Size size) {
+		super(resource, initialLocation, size);
+	}
 
 }
