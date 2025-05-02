@@ -7,7 +7,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 public class Coin extends DynamicSpriteEntity {
 
 	public Coin(Coordinate2D initialLocation) {
-		super("sprites/coin.png", initialLocation, 1, 12);
+		super("sprites/coinresized1.png", initialLocation, 1, 12);
 		playAnimation(new LoopingAnimation(0, 0, 0, 11));
 		
 

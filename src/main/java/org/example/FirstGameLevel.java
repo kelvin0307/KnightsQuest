@@ -14,8 +14,9 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 	@Override
 	public void setupScene() {
 		setBackgroundColor(Color.BLACK);
-		setSize(new Size(1920, 1080));
-	}
+		setSize(new Size(3840, 1080));
+		
+		}
 
 	@Override
 	public void setupEntities() {
