@@ -21,7 +21,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public float jumpForce;
 
     public Player(Coordinate2D location) {
-        super("sprites/knight.png", location, new Size(128, 128), 4, 8);
+        super("sprites/knight.png", location, new Size(64, 64), 4, 8);
         playAnimation(new LoopingAnimation(0, 2, 0, 3));
         setGravityConstant(0.5);
         setFrictionConstant(0.04);
