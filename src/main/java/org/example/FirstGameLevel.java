@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.entities.Coin;
+import org.example.entities.knight.Player;
 import org.example.entities.objects.Floor;
 import org.example.entities.tiles.PredefinedTileSets;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -20,6 +21,7 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 
 	@Override
 	public void setupEntities() {
+
 	    var bottomFloor = new Floor(new Coordinate2D(0, 670), new Size(550, 10));
 	    addEntity(bottomFloor);
 
@@ -38,6 +40,10 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 	    
 	    var coin = new Coin(new Coordinate2D(500, 550));
 	    addEntity(coin);
+
+		var player = new Player(new Coordinate2D(200, 700));
+		addEntity(player);
+
 
 	}
 
