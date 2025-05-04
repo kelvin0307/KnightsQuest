@@ -18,10 +18,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public int health;
     public int coinsCollected;
     public float moveSpeed;
-    public float jumpForce;
+    public float jumpForce = 10;
+    public boolean isOnGround;
 
     public Player(Coordinate2D location) {
-        super("sprites/knight.png", location, new Size(64, 64), 4, 8);
+        super("sprites/knight.png", location, new Size(32, 32), 4, 8);
         playAnimation(new LoopingAnimation(0, 2, 0, 3));
         setGravityConstant(0.5);
         setFrictionConstant(0.04);
@@ -32,7 +33,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     }
 
     public void jump(){
-
+        setSpeed(jumpForce);
+        setDirection(180d);
     }
 
     @Override
@@ -41,10 +43,11 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
             setMotion(3,270d);
         } else if(pressedKeys.contains(KeyCode.RIGHT)){
             setMotion(3,90d);
-        } else if(pressedKeys.contains(KeyCode.UP)){
-            setMotion(3,180d);
-        } else if(pressedKeys.contains(KeyCode.DOWN)){
-            setMotion(3,0d);
+        } else if(pressedKeys.contains(KeyCode.SPACE)) {
+            if(isOnGround){
+                jump();
+                isOnGround = false;
+            }
         } else if(pressedKeys.isEmpty()){
             setSpeed(0);
         }
@@ -76,6 +79,7 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public void onCollision(List<Collider> list) {
         System.out.println("Collision!");
         setSpeed(0);
+        isOnGround = true;
     }
 
 }
