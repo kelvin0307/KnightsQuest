@@ -3,6 +3,7 @@ package org.example;
 import org.example.entities.Coin;
 import org.example.entities.knight.Player;
 import org.example.entities.objects.Floor;
+import org.example.entities.slime.GreenSlime;
 import org.example.entities.slime.PurpleSlime;
 import org.example.entities.tiles.PredefinedTileSets;
 import com.github.hanyaeger.api.Coordinate2D;
@@ -42,10 +43,11 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 		var player = new Player(new Coordinate2D(200, 700));
 		addEntity(player);
 
-		var purpleSlime = new PurpleSlime(new Coordinate2D(600, 700));
+		var purpleSlime = new PurpleSlime(new Coordinate2D(800, 500));
 		addEntity(purpleSlime);
 
-
+		var greenSlime = new GreenSlime(new Coordinate2D(1100, 400));
+		addEntity(greenSlime);
 	}
 
 

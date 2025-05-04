@@ -16,7 +16,7 @@ public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian
 
     public SlimeBase(String spritePath, Coordinate2D location, Size size) {
         super(spritePath, location, size, 3, 4); // 3 rijen, 4 kolommen in sprite sheet
-        playAnimation(new LoopingAnimation(0, 3, 0, 3)); // Rij 1 (middelste rij), kolommen 0 t/m 3
+        playAnimation(new LoopingAnimation(1, 3, 0, 3)); // Rij 1 (middelste rij), kolommen 0 t/m 3
         setGravityConstant(0.5);
         setFrictionConstant(0.02);
     }
