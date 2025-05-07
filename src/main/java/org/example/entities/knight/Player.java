@@ -1,16 +1,15 @@
 package org.example.entities.knight;
 
 import com.github.hanyaeger.api.Coordinate2D;
-import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 import javafx.scene.input.KeyCode;
 
-import java.text.MessageFormat;
+
+
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 
 public class Player extends DynamicSpriteEntity implements KeyListener, SceneBorderTouchingWatcher, Newtonian, Collided {
@@ -20,12 +19,17 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
     public float moveSpeed;
     public float jumpForce = 10;
     public boolean isOnGround;
+    
+    private final Animation idleRightAnimation = new LoopingAnimation(0, 0, 0, 3);
+    
+   
 
     public Player(Coordinate2D location) {
-        super("sprites/knight.png", location, new Size(32, 32), 4, 8);
-        playAnimation(new LoopingAnimation(0, 2, 0, 3));
+        super("sprites/knightupsized.png", location, 4, 8);
+        playAnimation(idleRightAnimation);
         setGravityConstant(0.5);
         setFrictionConstant(0.04);
+        getBoundingBox();
     }
 
     public void move(){
@@ -77,8 +81,8 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     @Override
     public void onCollision(List<Collider> list) {
-        System.out.println("Collision!");
-        setSpeed(0);
+        
+
         isOnGround = true;
     }
 
