@@ -42,7 +42,7 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 		var knight = new KnightComposition(new Coordinate2D(0, 0));
 		addEntity(knight);
 
-		var purpleSlime = new PurpleSlime(new Coordinate2D(800, 500));
+		var purpleSlime = new PurpleSlime(new Coordinate2D(710, 500));
 		addEntity(purpleSlime);
 
 		var greenSlime = new GreenSlime(new Coordinate2D(1100, 400));
