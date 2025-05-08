@@ -1,8 +1,7 @@
 package org.example;
-
 import org.example.entities.Coin;
-import org.example.entities.knight.Player;
-import org.example.entities.objects.Floor;
+import org.example.entities.knight.Knight;
+import org.example.entities.knight.KnightComposition;
 import org.example.entities.slime.GreenSlime;
 import org.example.entities.slime.PurpleSlime;
 import org.example.entities.tiles.PredefinedTileSets;
@@ -40,8 +39,8 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 	    var coin = new Coin(new Coordinate2D(500, 550));
 	    addEntity(coin);
 
-		var player = new Player(new Coordinate2D(200, 700));
-		addEntity(player);
+		var knight = new KnightComposition(new Coordinate2D(0, 0));
+		addEntity(knight);
 
 		var purpleSlime = new PurpleSlime(new Coordinate2D(800, 500));
 		addEntity(purpleSlime);
