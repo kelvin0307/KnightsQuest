@@ -32,10 +32,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
         getBoundingBox();
     }
 
-    public void move(){
-
-    }
-
     public void jump(){
         setSpeed(jumpForce);
         setDirection(180d);
@@ -81,8 +77,6 @@ public class Player extends DynamicSpriteEntity implements KeyListener, SceneBor
 
     @Override
     public void onCollision(List<Collider> list) {
-        
-
         isOnGround = true;
     }
 
