@@ -20,6 +20,7 @@ public class KnightsQuest extends YaegerGame
     public void setupScenes() {
     	addScene(0, new TitleScene(this));
     	addScene(1, new MenuScene(this));
-    	addScene(2, new FirstGameLevel());
+    	addScene(2, new FirstGameLevel(this));
+    	addScene(3, new SecondGameLevel());
     }
 }

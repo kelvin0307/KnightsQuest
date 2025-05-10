@@ -2,6 +2,7 @@ package org.example.entities.knight;
 
 import java.util.List;
 
+import org.example.KnightsQuest;
 import org.example.entities.tiles.Tile;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -10,8 +11,9 @@ import com.github.hanyaeger.api.entities.Collider;
 
 public class KnightWallCollisionBox extends KnightCollisionBox {
 
-	public KnightWallCollisionBox(Coordinate2D initialLocation, KnightComposition parent) {
-		super(initialLocation, parent, new Size(5, 50));
+	
+	public KnightWallCollisionBox(Coordinate2D initialLocation, KnightComposition knightcomposition) {
+		super(initialLocation, knightcomposition, new Size(5, 50));
 		// TODO Auto-generated constructor stub
 	}
 
