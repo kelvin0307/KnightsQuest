@@ -7,12 +7,22 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
 import java.util.List;
 
+/**
+ * Basisklasse voor alle slijm-vijanden in het spel.
+ * Handelt de basisbeweging, zwaartekracht en animaties voor slijmachtige vijanden.
+ */
 public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian, Collided {
 
     public double speed;
     public int moveCounter = 0;
 
-
+    /**
+     * Maakt een nieuwe basis slijm aan
+     * @param spritePath pad naar het sprite plaatje
+     * @param location startpositie (x,y)
+     * @param size grootte van de slijm
+     * @param speed beweegsnelheid
+     */
     public SlimeBase(String spritePath, Coordinate2D location, Size size, double speed) {
         super(spritePath, location, size, 3, 4); // 3 rijen, 4 kolommen in sprite sheet
         this.speed = speed;
@@ -21,6 +31,11 @@ public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian
         setFrictionConstant(0.02);
     }
 
+    /**
+     * Wordt aangeroepen bij botsingen.
+     * Handelt de automatische heen-en-weer beweging van de slijm.
+     * @param list lijst van objecten waarmee gebotst is
+     */
     @Override
     public void onCollision(List<Collider> list) {
 

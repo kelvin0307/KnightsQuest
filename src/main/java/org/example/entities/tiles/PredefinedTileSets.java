@@ -2,6 +2,10 @@ package org.example.entities.tiles;
 
 import java.util.List;
 
+/**
+ * Bevat vooraf gedefinieerde tegelopstellingen voor levels.
+ * Elke methode maakt een specifiek platform of levelgedeelte aan.
+ */
 public class PredefinedTileSets {
 
     public static List<Tile> hoofdPlatform() {
