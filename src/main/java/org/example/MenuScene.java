@@ -9,18 +9,42 @@ import com.github.hanyaeger.api.AnchorPoint;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.scenes.StaticScene;
 
+/**
+ * Het hoofdmenu van het Knight's Quest spel.
+ * Bevat navigatieknoppen en achtergrondmuziek.
+ */
 public class MenuScene extends StaticScene {
+
 	private KnightsQuest knightsquest;
-	
+
+	/**
+	 * Maakt een nieuwe menu scene aan
+	 * @param knightsquest referentie naar het hoofdspel voor scènetransities
+	 */
 	public MenuScene(KnightsQuest knightsquest) {
 		this.knightsquest = knightsquest;
 	}
+
+	/**
+	 * Stelt de scene-instellingen in:
+	 * - Achtergrondafbeelding (titlescreen.jpg)
+	 * - Achtergrondmuziek (time_for_adventure.mp3)
+	 */
 	@Override
 	public void setupScene() {
 		setBackgroundImage("images/titlescreen.jpg");
 		setBackgroundAudio("music/time_for_adventure.mp3");
 	}
 
+	/**
+	 * Plaatst alle menu-entiteiten:
+	 * - Startknop
+	 * - Levelselectieknop
+	 * - Instellingenknop
+	 * - Afsluitknop
+	 *
+	 * Knoppen worden gecentreerd en gelijkmatig verdeeld
+	 */
 	@Override
 	public void setupEntities() {
 	    double buttonSpacing = 125; 

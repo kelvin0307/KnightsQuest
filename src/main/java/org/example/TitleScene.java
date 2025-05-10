@@ -10,12 +10,27 @@ import com.github.hanyaeger.api.scenes.StaticScene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * Het titelscherm van Knight's Quest met game logo en startknop.
+ * Toont de game branding en biedt toegang tot het hoofdmenu.
+ */
 public class TitleScene extends StaticScene{
+
 	private KnightsQuest knightsquest;
+
+	/**
+	 * Maakt een nieuwe titelscene aan
+	 * @param knightsquest referentie naar het hoofdspel voor navigatie
+	 */
 	public TitleScene(KnightsQuest knightsquest) {
 		this.knightsquest = knightsquest;
 	}
 
+	/**
+	 * Initialiseert scene-instellingen:
+	 * - Achtergrondafbeelding (titlescreen.jpg)
+	 * - Achtergrondmuziek (time_for_adventure.mp3)
+	 */
 	@Override
 	public void setupScene() {
 		System.out.println(getClass().getResource("/images/titlescreen.jpg"));
@@ -23,6 +38,11 @@ public class TitleScene extends StaticScene{
 		setBackgroundAudio("music/time_for_adventure.mp3");
 	}
 
+	/**
+	 * Plaatst entiteiten in de scene:
+	 * - Game titel tekst
+	 * - Startknop
+	 */
 	@Override
 	public void setupEntities() {
 		var knightsQuestText = new TextEntity(new Coordinate2D(getWidth() /2, getHeight() /2), "Knight's Quest");

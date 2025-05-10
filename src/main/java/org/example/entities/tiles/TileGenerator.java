@@ -6,10 +6,21 @@ import java.util.List;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 
+/**
+ * Een hulpmiddel om tegels te genereren voor levels op basis van een raster.
+ * Zet numerieke waarden om in echte tegelobjecten.
+ */
 public class TileGenerator {
  
 	private static final int TILE_SIZE = 48;
 
+	/**
+	 * Maakt tegels aan op basis van een numerieke plattegrond
+	 * @param map een 2D-array met tegelcodes
+	 * @param startX startpunt X-coördinaat voor plaatsing
+	 * @param startY startpunt Y-coördinaat voor plaatsing
+	 * @return lijst van aangemaakte tegelobjecten
+	 */
 	public static List<Tile> generateTiles(int[][] map, int startX, int startY) {
 	    List<Tile> tiles = new ArrayList<>();
 

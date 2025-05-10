@@ -5,8 +5,11 @@ import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.*;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
-
-
+/**
+ * De Knight klasse representeert een ridder entity in het spel.
+ * Deze klasse erft over van DynamicSpriteEntity en bevat animaties voor verschillende acties
+ * zoals idle, rennen, rollen en springen.
+ */
 public class Knight extends DynamicSpriteEntity {
     public float jumpForce = 12f;
     public boolean isOnGround;

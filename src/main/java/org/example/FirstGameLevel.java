@@ -11,8 +11,17 @@ import com.github.hanyaeger.api.scenes.ScrollableDynamicScene;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Het eerste level van het spel, met platforms, vijanden en verzamelobjecten.
+ * Een scrollbaar level met meerdere uitdagingen voor de speler.
+ */
 public class FirstGameLevel extends ScrollableDynamicScene {
 
+	/**
+	 * Stelt de basisinstellingen van het level in:
+	 * - Zwarte achtergrond
+	 * - Grootte van het scrollbare gebied (3840x1080 pixels)
+	 */
 	@Override
 	public void setupScene() {
 		setBackgroundColor(Color.BLACK);
@@ -20,6 +29,13 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 		
 		}
 
+	/**
+	 * Plaatst alle entiteiten in het level:
+	 * - Platforms en obstakels
+	 * - De speler (ridder)
+	 * - Vijanden (slijmmonsters)
+	 * - Verzamelobjecten (munten)
+	 */
 	@Override
 	public void setupEntities() {
 	

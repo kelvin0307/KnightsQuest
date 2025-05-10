@@ -12,19 +12,33 @@ import com.github.hanyaeger.api.userinput.KeyListener;
 
 import javafx.scene.input.KeyCode;
 
+/**
+ * Vertegenwoordigt de volledige ridder met alle onderdelen en gedrag.
+ * Bevat de ridder zelf, botsingsvakjes en besturing.
+ */
+
 public class KnightComposition extends DynamicCompositeEntity implements KeyListener, Newtonian{
 	
     public boolean isOnGround;
 	public int health = 5;
 	public int coinsCollected;
 	private Knight knight;
-	
+
+	/**
+	 * Maakt nieuwe ridder aan
+	 * @param initialLocation startpositie (x,y)
+	 */
 	public KnightComposition(Coordinate2D initialLocation) {
 		super(initialLocation);
 		setGravityConstant(0.5);
 
 	}
 
+	/**
+	 * Zet ridderonderdelen klaar:
+	 * - Sprite voor animaties
+	 * - Botsingsvakjes voor voeten, zijkanten en hoofd
+	 */
 	@Override
 	protected void setupEntities() {
 		knight = new Knight(new Coordinate2D(0, 0));
@@ -40,6 +54,12 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 		addEntity(ceilingBox);
 	}
 
+	/**
+	 * Besturing via toetsenbord:
+	 * - Pijltjes voor lopen
+	 * - Spatie om te springen
+	 * - Stopt animatie bij loslaten toetsen
+	 */
 	@Override
 	public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
 	    if (pressedKeys.contains(KeyCode.LEFT)) {
@@ -65,7 +85,9 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 
 
 
-    
+	/**
+	 * Zorgt dat ridder op platform blijft staan
+	 */
     public void handleFloorCollision(Tile tile) {
         double tileTop = tile.getBoundingBox().getMinY();
         double knightHeight = knight.getHeight();
@@ -75,7 +97,9 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
     }
 
 
-    
+	/**
+	 * Blokkeert beweging door muren
+	 */
     public void handleWallCollision(Tile tile) {
     	 double rightSpeed = getSpeedInDirection(Direction.RIGHT);
     	    double leftSpeed = getSpeedInDirection(Direction.LEFT);
@@ -90,7 +114,10 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
     	        nullifySpeedInDirection(Direction.LEFT);
     	    }
     	}
-    
+
+	/**
+	 * Voorkomt door plafond gaan
+	 */
     public void handleCeilingCollision(Tile tile) {
         double tileBottom = tile.getBoundingBox().getMaxY();
         setAnchorLocationY(tileBottom + 1);
