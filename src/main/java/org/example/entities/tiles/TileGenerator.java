@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.Size;
 
 public class TileGenerator {
  
-	public static final int TILE_SIZE = 64;
+	private static final int TILE_SIZE = 48;
 
 	public static List<Tile> generateTiles(int[][] map, int startX, int startY) {
 	    List<Tile> tiles = new ArrayList<>();
@@ -25,11 +25,27 @@ public class TileGenerator {
 
 	            switch (tileType) {
 	                case 0 -> tiles.add(new GrassTile(location, size));
-	                }
-	            }
+	                case 1 -> tiles.add(new RockTile(location, size));
+	                case 2 -> tiles.add(new DirtTile(location, size));
+	                case 3 -> tiles.add(new IceTile(location, size));
+	                case 4 -> tiles.add(new StoneTile(location, size));
+	                case 5 -> tiles.add(new StoneRockTile(location, size));
+	                case 6 -> tiles.add(new BridgeTile(location, size));
+	                case 7 -> tiles.add(new BlueIceTile(location, size));
+	                case 8 -> tiles.add(new BlueIceTopTile(location, size));
+	                case 9 -> tiles.add(new OrangeTopTile(location, size));
+	                case 10 -> tiles.add(new OrangeStoneTile(location, size));
+	                case 11 -> tiles.add(new OrangeRockTile(location, size));
+	                case 50 -> {}
+	                	
+	                	
+	            
 	        }
 
+	    
+	}
+	    
+}
 	    return tiles;
 	}
-
 }

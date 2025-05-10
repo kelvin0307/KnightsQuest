@@ -1,9 +1,9 @@
 package org.example;
 import org.example.entities.Coin;
-import org.example.entities.knight.Knight;
 import org.example.entities.knight.KnightComposition;
 import org.example.entities.slime.GreenSlime;
 import org.example.entities.slime.PurpleSlime;
+import org.example.entities.tiles.GrassTile;
 import org.example.entities.tiles.PredefinedTileSets;
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
@@ -22,19 +22,12 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 
 	@Override
 	public void setupEntities() {
-
-	    for (var tile : PredefinedTileSets.hoofdVloer()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.opstapLinks()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.middenPlatform()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.hogeSprong()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.rechterPlateau()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.trapOmhoog()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.bovenstePlatform()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.gatInDeGrond()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.zwevendPlatform()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.langeSprong()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.rechtsKlim()) addEntity(tile);
-	    for (var tile : PredefinedTileSets.finalePlatform()) addEntity(tile);
+	
+	    for(var tile : PredefinedTileSets.hoofdPlatform()) addEntity(tile);
+	    for(var tile : PredefinedTileSets.tweedePlatform()) addEntity(tile);
+	    for(var tile : PredefinedTileSets.eersteSprong()) addEntity(tile);
+	    for(var tile : PredefinedTileSets.derdePlatform()) addEntity(tile);
+	    for(var tile : PredefinedTileSets.vierdePlatform()) addEntity(tile);
 	    
 	    var coin = new Coin(new Coordinate2D(500, 550));
 	    addEntity(coin);
@@ -48,6 +41,7 @@ public class FirstGameLevel extends ScrollableDynamicScene {
 		var greenSlime = new GreenSlime(new Coordinate2D(1100, 400));
 		addEntity(greenSlime);
 	}
+
 
 
 }

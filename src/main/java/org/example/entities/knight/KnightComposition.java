@@ -22,6 +22,7 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 	public KnightComposition(Coordinate2D initialLocation) {
 		super(initialLocation);
 		setGravityConstant(0.5);
+
 	}
 
 	@Override
@@ -76,18 +77,19 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 
     
     public void handleWallCollision(Tile tile) {
-        double knightSpeed = getSpeedInDirection(Direction.LEFT) - getSpeedInDirection(Direction.RIGHT);
+    	 double rightSpeed = getSpeedInDirection(Direction.RIGHT);
+    	    double leftSpeed = getSpeedInDirection(Direction.LEFT);
 
-        if (getDirection() == Direction.RIGHT.getValue() && knightSpeed > 0) {
-            // Beweegt echt naar rechts
-            setAnchorLocationX(tile.getBoundingBox().getMinX() - knight.getWidth());
-            nullifySpeedInDirection(Direction.RIGHT);
-        } else if (getDirection() == Direction.LEFT.getValue() && knightSpeed < 0) {
-            // Beweegt echt naar links
-            setAnchorLocationX(tile.getBoundingBox().getMaxX() + 1);
-            nullifySpeedInDirection(Direction.LEFT);
-        }
-    }
+    	    if (getDirection() == Direction.RIGHT.getValue() && rightSpeed > 0) {
+    	        // Beweegt naar rechts
+    	        setAnchorLocationX(tile.getBoundingBox().getMinX() - knight.getWidth());
+    	        nullifySpeedInDirection(Direction.RIGHT);
+    	    } else if (getDirection() == Direction.LEFT.getValue() && leftSpeed > 0) {
+    	        // Beweegt naar links
+    	        setAnchorLocationX(tile.getBoundingBox().getMaxX() + 1);
+    	        nullifySpeedInDirection(Direction.LEFT);
+    	    }
+    	}
     
     public void handleCeilingCollision(Tile tile) {
         double tileBottom = tile.getBoundingBox().getMaxY();

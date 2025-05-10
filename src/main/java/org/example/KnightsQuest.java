@@ -5,7 +5,7 @@ import com.github.hanyaeger.api.YaegerGame;
 
 public class KnightsQuest extends YaegerGame
 {
-    public static void main( String[] args )
+    public static void main(String[] args)
     {
         launch(args);
     }
