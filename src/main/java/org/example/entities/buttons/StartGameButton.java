@@ -62,7 +62,7 @@ public class StartGameButton extends TextEntity implements MouseButtonPressedLis
 	 */
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
-		knightsquest.setActiveScene(2);
+		knightsquest.setActiveScene(3);
 	}
 
 }
