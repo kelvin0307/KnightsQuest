@@ -5,6 +5,7 @@ import java.util.Set;
 import org.example.KnightsQuest;
 import org.example.entities.Coin;
 import org.example.entities.HealthManager;
+import org.example.entities.slime.SlimeBase;
 import org.example.entities.tiles.Tile;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -67,6 +68,9 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 
         var flagBox = new KnightFlagCollisionBox(new Coordinate2D(22, 22), this, knightsQuest);
         addEntity(flagBox);
+
+        var slimeBox = new KnightSlimeCollisionBox(new Coordinate2D(22, 22), this, healthManager);
+        addEntity(slimeBox);
     }
 
     /**
@@ -119,6 +123,10 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
             setAnchorLocationX(tile.getBoundingBox().getMaxX() + 1);
             nullifySpeedInDirection(Direction.LEFT);
         }
+    }
+
+    public void handleSlimeCollision(SlimeBase slime){
+
     }
 
 

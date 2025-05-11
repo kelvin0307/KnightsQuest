@@ -70,7 +70,6 @@ public class SecondGameLevel extends DynamicScene{
 	    for (var heart : healthManager.getHearts()) {
 	        addEntity(heart);
 	    }
-
 	}
 
 
