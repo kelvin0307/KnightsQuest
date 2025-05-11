@@ -39,12 +39,13 @@ public class KnightsQuest extends YaegerGame {
      */
     @Override
     public void setupScenes() {
-        HealthManager healthManager = new HealthManager(5); // 👈 één keer aanmaken
+        HealthManager healthManager = new HealthManager(5); 
 
         addScene(0, new TitleScene(this));
         addScene(1, new MenuScene(this));
         addScene(2, new FirstGameLevel(this, healthManager));
-        addScene(3, new SecondGameLevel(this, healthManager)); // ✅ nu correct
+        addScene(3, new SecondGameLevel(this, healthManager)); 
+        addScene(4, new SelectLevelScene(this));
     }
 
     

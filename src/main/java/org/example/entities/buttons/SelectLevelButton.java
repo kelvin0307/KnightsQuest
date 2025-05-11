@@ -62,7 +62,7 @@ public class SelectLevelButton extends TextEntity implements MouseButtonPressedL
 	 */
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
-		knightsquest.setActiveScene(0);
+		knightsquest.setActiveScene(4);
 	}
 
 }
