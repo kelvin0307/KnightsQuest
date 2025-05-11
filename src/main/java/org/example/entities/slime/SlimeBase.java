@@ -14,7 +14,7 @@ import java.util.List;
 public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian, Collided {
 
     public double speed;
-    public int moveCounter = 0;
+    public int moveCounter = 1;
 
     /**
      * Maakt een nieuwe basis slijm aan
@@ -38,17 +38,16 @@ public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian
      */
     @Override
     public void onCollision(List<Collider> list) {
-
         setMotion(0, Direction.DOWN);
         moveCounter++;
 
-        if (moveCounter < 100) {
+        if (moveCounter <= 40) {
             setMotion(speed, Direction.RIGHT);
         } else {
             setMotion(speed, Direction.LEFT);
         }
 
-        if(moveCounter == 200) {
+        if(moveCounter == 80) {
             moveCounter = 0;
         }
     }
