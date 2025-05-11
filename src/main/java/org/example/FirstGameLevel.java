@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.entities.Coin;
+import org.example.entities.CoinManager;
 import org.example.entities.FirstFlag;
 import org.example.entities.HealthManager;
 import org.example.entities.knight.KnightComposition;
@@ -21,6 +22,7 @@ public class FirstGameLevel extends DynamicScene {
 	private KnightComposition knight;
 	private final KnightsQuest knightsquest;
 	private HealthManager healthManager;
+	private CoinManager coinManager;
 	
 	public FirstGameLevel(KnightsQuest knightsquest, HealthManager healthManager) {
 		this.knightsquest = knightsquest;
@@ -50,17 +52,29 @@ public class FirstGameLevel extends DynamicScene {
 		for (var tile : PredefinedTileSets.eersteSprong1()) addEntity(tile);
 		for (var tile : PredefinedTileSets.derdePlatform1()) addEntity(tile);
 
-		var coin = new Coin(new Coordinate2D(500, 550));
-		addEntity(coin);
+		var coin1 = new Coin(new Coordinate2D(500, 550));
+		addEntity(coin1);
+		
+		var coin2 = new Coin(new Coordinate2D(670, 850));
+		addEntity(coin2);
+		
+		var coin3 = new Coin(new Coordinate2D(720, 850));
+		addEntity(coin3);
+		
+		var coin4 = new Coin(new Coordinate2D(1200, 440));
+		addEntity(coin4);
+		
+		coinManager = new CoinManager(4);
+		addEntity(coinManager.getDisplay());
 
-		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest, healthManager);
+		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest, healthManager, coinManager);
 		addEntity(knight);
 		
 		healthManager.reset();
 		for(var heart : healthManager.getHearts()) {
 			addEntity(heart);
 		}
-
+		
 		var purpleSlime = new PurpleSlime(new Coordinate2D(710, 500));
 		addEntity(purpleSlime);
 

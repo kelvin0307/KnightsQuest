@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.example.KnightsQuest;
 import org.example.entities.Coin;
+import org.example.entities.CoinManager;
 import org.example.entities.HealthManager;
 import org.example.entities.slime.SlimeBase;
 import org.example.entities.tiles.Tile;
@@ -15,6 +16,7 @@ import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
+import com.github.hanyaeger.api.media.SoundClip;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
@@ -34,16 +36,18 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
     private Knight knight;
     private final KnightsQuest knightsQuest;
     private HealthManager healthManager;
+    private CoinManager coinManager;
 
     /**
      * Maakt een nieuwe ridder aan
      * @param initialLocation De startpositie
      * @param knightsQuest Verwijzing naar de game voor scene-wissels
      */
-    public KnightComposition(Coordinate2D initialLocation, KnightsQuest knightsQuest, HealthManager healthManager) {
+    public KnightComposition(Coordinate2D initialLocation, KnightsQuest knightsQuest, HealthManager healthManager, CoinManager coinManager) {
         super(initialLocation);
         this.knightsQuest = knightsQuest;
         this.healthManager = healthManager;
+        this.coinManager = coinManager;
         setGravityConstant(0.5);
     }
 
@@ -131,11 +135,6 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
         }
     }
 
-    public void handleSlimeCollision(SlimeBase slime){
-
-    }
-
-
     /**
      * Voorkomt door plafond gaan
      */
@@ -147,7 +146,9 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
     
     public void handleCoinCollision(Coin coin) {
     	coin.remove();
-    	coinsCollected ++;
+    	coinManager.addCoin();
+    	var coinSound = new SoundClip("sounds/coin.wav");
+    	coinSound.play();
     	
     }
     

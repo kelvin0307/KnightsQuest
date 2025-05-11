@@ -1,36 +1,37 @@
 package org.example.entities.buttons;
 
+import org.example.KnightsQuest;
+
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 import com.github.hanyaeger.api.userinput.MouseButtonPressedListener;
 import com.github.hanyaeger.api.userinput.MouseEnterListener;
 import com.github.hanyaeger.api.userinput.MouseExitListener;
 
+import javafx.scene.Cursor;
 import javafx.scene.input.MouseButton;
 
 public class SecondLevelButton extends SpriteEntity implements MouseButtonPressedListener, MouseEnterListener, MouseExitListener{
-
-	protected SecondLevelButton(Coordinate2D initialLocation) {
-		super("images/level2.png", initialLocation);
-		// TODO Auto-generated constructor stub
+	private KnightsQuest knightsQuest;
+	public SecondLevelButton(Coordinate2D initialLocation, KnightsQuest knightsQuest) {
+		super("images/level2.png", initialLocation, new Size(500, 750));
+		this.knightsQuest = knightsQuest;
 	}
 
 	@Override
 	public void onMouseExited() {
-		// TODO Auto-generated method stub
-		
+		setCursor(Cursor.DEFAULT);
 	}
 
 	@Override
 	public void onMouseEntered() {
-		// TODO Auto-generated method stub
-		
+		setCursor(Cursor.HAND);
 	}
 
 	@Override
 	public void onMouseButtonPressed(MouseButton button, Coordinate2D coordinate2d) {
-		// TODO Auto-generated method stub
-		
-	}
+		knightsQuest.setActiveScene(3);
 
+	}
 }

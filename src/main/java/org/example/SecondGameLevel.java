@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.entities.Coin;
+import org.example.entities.CoinManager;
 import org.example.entities.FirstFlag;
 import org.example.entities.HealthManager;
 import org.example.entities.knight.KnightComposition;
@@ -16,6 +18,7 @@ public class SecondGameLevel extends DynamicScene{
 	private KnightComposition knight;
 	private final KnightsQuest knightsquest;
 	private HealthManager healthManager;
+	private CoinManager coinManager;
 	
 	public SecondGameLevel(KnightsQuest knightsquest, HealthManager healthManager) {
 		this.knightsquest = knightsquest;
@@ -29,12 +32,17 @@ public class SecondGameLevel extends DynamicScene{
 
 	@Override
 	public void setupEntities() {
-		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest, healthManager);
+		
+		coinManager = new CoinManager(4);
+		addEntity(coinManager.getDisplay());
+	
+		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest, healthManager, coinManager);
 		addEntity(knight);
 		
 		healthManager.reset();
 		for(var heart : healthManager.getHearts()) {
 			addEntity(heart);
+		
 		}
 		
 		for (var tile : PredefinedTileSets.eerstePlatform2()) addEntity(tile);
@@ -45,6 +53,18 @@ public class SecondGameLevel extends DynamicScene{
 		for (var tile : PredefinedTileSets.zesdePlatform2()) addEntity(tile);
 		for (var tile : PredefinedTileSets.zevendePlatform2()) addEntity(tile);
 		for(var tile : PredefinedTileSets.achtstePlatform2()) addEntity(tile);
+		
+		var coin1 = new Coin(new Coordinate2D(240, 150));
+		addEntity(coin1);
+		
+		var coin2 = new Coin(new Coordinate2D(1235, 150));
+		addEntity(coin2);
+		
+		var coin3 = new Coin(new Coordinate2D(1245, 870));
+		addEntity(coin3);
+		
+		var coin4 = new Coin(new Coordinate2D(915, 820));
+		addEntity(coin4);
 		
 		var firstJumpTile = new IceTile(new Coordinate2D(680, 630), new Size(48, 48));
 		addEntity(firstJumpTile);
