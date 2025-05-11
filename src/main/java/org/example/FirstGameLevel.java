@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.entities.Coin;
 import org.example.entities.FirstFlag;
+import org.example.entities.HealthManager;
 import org.example.entities.knight.KnightComposition;
 import org.example.entities.slime.GreenSlime;
 import org.example.entities.slime.PurpleSlime;
@@ -19,9 +20,11 @@ public class FirstGameLevel extends DynamicScene {
 
 	private KnightComposition knight;
 	private final KnightsQuest knightsquest;
+	private HealthManager healthManager;
 	
-	public FirstGameLevel(KnightsQuest knightsquest) {
+	public FirstGameLevel(KnightsQuest knightsquest, HealthManager healthManager) {
 		this.knightsquest = knightsquest;
+		this.healthManager = healthManager;
 	}
 
 	/**
@@ -50,8 +53,13 @@ public class FirstGameLevel extends DynamicScene {
 		var coin = new Coin(new Coordinate2D(500, 550));
 		addEntity(coin);
 
-		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest);
+		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest, healthManager);
 		addEntity(knight);
+		
+		healthManager.reset();
+		for(var heart : healthManager.getHearts()) {
+			addEntity(heart);
+		}
 
 		var purpleSlime = new PurpleSlime(new Coordinate2D(710, 500));
 		addEntity(purpleSlime);

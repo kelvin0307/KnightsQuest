@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.entities.HealthManager;
+
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.YaegerGame;
 
@@ -7,9 +9,9 @@ import com.github.hanyaeger.api.YaegerGame;
  * De hoofdklasse van het Knight's Quest spel.
  * Beheert het spelvenster en scene-transities.
  */
-public class KnightsQuest extends YaegerGame
-{
-    /**
+public class KnightsQuest extends YaegerGame {
+    private int currentSceneId = 0;
+	/**
      * Main methode om het spel te starten
      * @param args command line argumenten
      */
@@ -37,9 +39,23 @@ public class KnightsQuest extends YaegerGame
      */
     @Override
     public void setupScenes() {
-    	addScene(0, new TitleScene(this));
-    	addScene(1, new MenuScene(this));
-    	addScene(2, new FirstGameLevel(this));
-    	addScene(3, new SecondGameLevel(this));
+        HealthManager healthManager = new HealthManager(5); // 👈 één keer aanmaken
+
+        addScene(0, new TitleScene(this));
+        addScene(1, new MenuScene(this));
+        addScene(2, new FirstGameLevel(this, healthManager));
+        addScene(3, new SecondGameLevel(this, healthManager)); // ✅ nu correct
     }
+
+    
+    public int getActiveSceneId() {
+    	return currentSceneId;
+    }
+    
+    @Override
+    public void setActiveScene(int id) {
+    	this.currentSceneId = id;
+    	super.setActiveScene(id);
+    }
+    
 }

@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.entities.FirstFlag;
+import org.example.entities.HealthManager;
 import org.example.entities.knight.KnightComposition;
 import org.example.entities.tiles.IceTile;
 import org.example.entities.tiles.PredefinedTileSets;
@@ -11,9 +13,11 @@ import com.github.hanyaeger.api.scenes.DynamicScene;
 public class SecondGameLevel extends DynamicScene{
 	private KnightComposition knight;
 	private final KnightsQuest knightsquest;
+	private HealthManager healthManager;
 	
-	public SecondGameLevel(KnightsQuest knightsquest) {
+	public SecondGameLevel(KnightsQuest knightsquest, HealthManager healthManager) {
 		this.knightsquest = knightsquest;
+		this.healthManager = healthManager;
 	}
 	
 	@Override
@@ -23,8 +27,13 @@ public class SecondGameLevel extends DynamicScene{
 
 	@Override
 	public void setupEntities() {
-		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest);
+		knight = new KnightComposition(new Coordinate2D(0, 0), knightsquest, healthManager);
 		addEntity(knight);
+		
+		healthManager.reset();
+		for(var heart : healthManager.getHearts()) {
+			addEntity(heart);
+		}
 		
 		for (var tile : PredefinedTileSets.eerstePlatform2()) addEntity(tile);
 		for (var tile : PredefinedTileSets.tweedePlatform2()) addEntity(tile);
@@ -35,14 +44,24 @@ public class SecondGameLevel extends DynamicScene{
 		for (var tile : PredefinedTileSets.zevendePlatform2()) addEntity(tile);
 		for(var tile : PredefinedTileSets.achtstePlatform2()) addEntity(tile);
 		
-		var firstJumpTile = new IceTile(new Coordinate2D(680, 600), new Size(48, 48));
+		var firstJumpTile = new IceTile(new Coordinate2D(680, 630), new Size(48, 48));
 		addEntity(firstJumpTile);
 		
-		var secondJumpTile = new IceTile(new Coordinate2D(800, 500), new Size(48,48));
+		var secondJumpTile = new IceTile(new Coordinate2D(800, 530), new Size(48,48));
 		addEntity(secondJumpTile);
 		
-		var thirdJumpTile = new IceTile(new Coordinate2D(920, 400), new Size(48, 48));
+		var thirdJumpTile = new IceTile(new Coordinate2D(920, 430), new Size(48, 48));
 		addEntity(thirdJumpTile);
+		
+		var flag = new FirstFlag(new Coordinate2D(1600, 500));
+		addEntity(flag);
 	}
+	
+	public void resetHealthDisplay() {
+	    for (var heart : healthManager.getHearts()) {
+	        addEntity(heart);
+	    }
+	}
+
 
 }

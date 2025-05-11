@@ -4,12 +4,15 @@ import java.util.Set;
 
 import org.example.KnightsQuest;
 import org.example.entities.Coin;
+import org.example.entities.HealthManager;
 import org.example.entities.tiles.Tile;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.Newtonian;
+import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
+import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
 
 import javafx.scene.input.KeyCode;
@@ -18,7 +21,7 @@ import javafx.scene.input.KeyCode;
  * Vertegenwoordigt de volledige ridder met alle onderdelen en gedrag.
  * Bevat de ridder zelf, botsingsvakjes en besturing.
  */
-public class KnightComposition extends DynamicCompositeEntity implements KeyListener, Newtonian {
+public class KnightComposition extends DynamicCompositeEntity implements KeyListener, Newtonian, SceneBorderCrossingWatcher {
 
     public boolean isOnGround;
     public int health = 5;
@@ -26,15 +29,17 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 
     private Knight knight;
     private final KnightsQuest knightsQuest;
+    private HealthManager healthManager;
 
     /**
      * Maakt een nieuwe ridder aan
      * @param initialLocation De startpositie
      * @param knightsQuest Verwijzing naar de game voor scene-wissels
      */
-    public KnightComposition(Coordinate2D initialLocation, KnightsQuest knightsQuest) {
+    public KnightComposition(Coordinate2D initialLocation, KnightsQuest knightsQuest, HealthManager healthManager) {
         super(initialLocation);
         this.knightsQuest = knightsQuest;
+        this.healthManager = healthManager;
         setGravityConstant(0.5);
     }
 
@@ -48,13 +53,16 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
         knight = new Knight(new Coordinate2D(0, 0));
         addEntity(knight);
 
-        var floorBox = new KnightFloorCollisionBox(new Coordinate2D(22, 60), this);
+        var floorBox = new KnightFloorCollisionBox(new Coordinate2D(22, 57), this);
         addEntity(floorBox);
 
-        var wallBox = new KnightWallCollisionBox(new Coordinate2D(59, 7), this);
-        addEntity(wallBox);
+        var wallBoxRight = new KnightWallCollisionBox(new Coordinate2D(44, 7), this, Side.RIGHT);
+        addEntity(wallBoxRight);
+        
+        var wallBoxLeft = new KnightWallCollisionBox(new Coordinate2D(15, 7), this, Side.LEFT);
+        addEntity(wallBoxLeft);
 
-        var ceilingBox = new KnightCeilingCollisionBox(new Coordinate2D(22, 0), this);
+        var ceilingBox = new KnightCeilingCollisionBox(new Coordinate2D(22, 10), this);
         addEntity(ceilingBox);
 
         var flagBox = new KnightFlagCollisionBox(new Coordinate2D(22, 22), this, knightsQuest);
@@ -67,6 +75,7 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
      * - Spatie om te springen
      * - Stopt animatie bij loslaten toetsen
      */
+    
     @Override
     public void onPressedKeysChange(Set<KeyCode> pressedKeys) {
         if (pressedKeys.contains(KeyCode.LEFT)) {
@@ -102,18 +111,16 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
     /**
      * Blokkeert beweging door muren
      */
-    public void handleWallCollision(Tile tile) {
-        double rightSpeed = getSpeedInDirection(Direction.RIGHT);
-        double leftSpeed = getSpeedInDirection(Direction.LEFT);
-
-        if (getDirection() == Direction.RIGHT.getValue() && rightSpeed > 0) {
-            setAnchorLocationX(tile.getBoundingBox().getMinX() - knight.getWidth());
+    public void handleWallCollision(Tile tile, Side side) {
+        if (side == Side.RIGHT) {
+            setAnchorLocationX(tile.getBoundingBox().getMinX() - knight.getWidth() -1);
             nullifySpeedInDirection(Direction.RIGHT);
-        } else if (getDirection() == Direction.LEFT.getValue() && leftSpeed > 0) {
+        } else if (side == Side.LEFT) {
             setAnchorLocationX(tile.getBoundingBox().getMaxX() + 1);
             nullifySpeedInDirection(Direction.LEFT);
         }
     }
+
 
     /**
      * Voorkomt door plafond gaan
@@ -129,4 +136,23 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
     	coinsCollected ++;
     	
     }
+    
+    public Knight getKnight() {
+    	return knight;
+    }
+
+    @Override
+    public void notifyBoundaryCrossing(SceneBorder border) {
+        if (border == SceneBorder.BOTTOM) {
+            setAnchorLocation(new Coordinate2D(0, 0));
+            healthManager.decrease();
+
+            if (healthManager.isDead()) {
+                healthManager.reset(); 
+                knightsQuest.setActiveScene(1); 
+            }
+        }
+    }
+
+
 }

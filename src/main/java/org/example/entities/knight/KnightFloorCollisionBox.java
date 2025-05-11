@@ -29,10 +29,15 @@ public class KnightFloorCollisionBox extends KnightCollisionBox {
      */
     @Override
     public void onCollision(List<Collider> colliders) {
+        // Begin elk frame met: aannemen dat we NIET op de grond staan
+        parent.getKnight().isOnGround = false;
+
         for (var collider : colliders) {
             if (collider instanceof Tile tile) {
-               parent.handleFloorCollision(tile);
+                parent.handleFloorCollision(tile);
+                parent.getKnight().isOnGround = true;
             }
         }
     }
+
 }

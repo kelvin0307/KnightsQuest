@@ -21,7 +21,12 @@ public class KnightFlagCollisionBox extends KnightCollisionBox {
     public void onCollision(List<Collider> colliders) {
         for (var collider : colliders) {
             if (collider instanceof FirstFlag) {
-                knightsQuest.setActiveScene(3);
+                int currentScene = knightsQuest.getActiveSceneId();
+                
+                switch(currentScene) {
+                case 2 -> knightsQuest.setActiveScene(3);
+                case 3 -> knightsQuest.setActiveScene(1);
+                }
             }
         }
     }
