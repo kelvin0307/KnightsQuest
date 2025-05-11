@@ -64,7 +64,7 @@ public class FirstGameLevel extends DynamicScene {
 		var purpleSlime = new PurpleSlime(new Coordinate2D(710, 500));
 		addEntity(purpleSlime);
 
-		var greenSlime = new GreenSlime(new Coordinate2D(1100, 400));
+		var greenSlime = new GreenSlime(new Coordinate2D(900, 400));
 		addEntity(greenSlime);
 
 		var flag = new FirstFlag(new Coordinate2D(1600, 400));

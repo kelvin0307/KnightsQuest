@@ -3,6 +3,8 @@ package org.example;
 import org.example.entities.FirstFlag;
 import org.example.entities.HealthManager;
 import org.example.entities.knight.KnightComposition;
+import org.example.entities.slime.GreenSlime;
+import org.example.entities.slime.PurpleSlime;
 import org.example.entities.tiles.IceTile;
 import org.example.entities.tiles.PredefinedTileSets;
 
@@ -52,15 +54,23 @@ public class SecondGameLevel extends DynamicScene{
 		
 		var thirdJumpTile = new IceTile(new Coordinate2D(920, 430), new Size(48, 48));
 		addEntity(thirdJumpTile);
+
 		
 		var flag = new FirstFlag(new Coordinate2D(1600, 500));
 		addEntity(flag);
+
+		var purpleSlime = new PurpleSlime(new Coordinate2D(710, 500));
+		addEntity(purpleSlime);
+
+		var greenSlime = new GreenSlime(new Coordinate2D(1300, 600));
+		addEntity(greenSlime);
 	}
 	
 	public void resetHealthDisplay() {
 	    for (var heart : healthManager.getHearts()) {
 	        addEntity(heart);
 	    }
+
 	}
 
 
