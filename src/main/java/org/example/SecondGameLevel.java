@@ -56,6 +56,7 @@ public class SecondGameLevel extends DynamicScene{
 		addEntity(thirdJumpTile);
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		
 		var flag = new FirstFlag(new Coordinate2D(1600, 500));
 		addEntity(flag);
@@ -68,6 +69,8 @@ public class SecondGameLevel extends DynamicScene{
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 
 		var purpleSlime = new PurpleSlime(new Coordinate2D(710, 500));
 		addEntity(purpleSlime);
@@ -75,6 +78,9 @@ public class SecondGameLevel extends DynamicScene{
 		var greenSlime = new GreenSlime(new Coordinate2D(1300, 600));
 		addEntity(greenSlime);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
