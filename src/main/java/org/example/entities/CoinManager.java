@@ -5,6 +5,10 @@ import com.github.hanyaeger.api.entities.impl.TextEntity;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * Een systeem dat ervoor zorgt muntweergave in een scene mogelijk is.
+ * Wordt gebruikt in de compositie van Knight.
+ */
 public class CoinManager {
     private int totalCoins;
     private int collectedCoins = 0;

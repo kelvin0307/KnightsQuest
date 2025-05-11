@@ -33,7 +33,6 @@ public class TitleScene extends StaticScene{
 	 */
 	@Override
 	public void setupScene() {
-		System.out.println(getClass().getResource("/images/titlescreen.jpg"));
 		setBackgroundImage("images/titlescreen.jpg");
 		setBackgroundAudio("music/time_for_adventure.mp3");
 	}
@@ -49,7 +48,6 @@ public class TitleScene extends StaticScene{
 		knightsQuestText.setAnchorPoint(AnchorPoint.CENTER_CENTER);
 		knightsQuestText.setFill(Color.ORANGE);
 		
-		System.out.println(getClass().getResource("/fonts/PixelOperator8.ttf"));
 		Font PixelOperator8 = Font.loadFont(
 			    getClass().getResource("/fonts/PixelOperator8-Bold.ttf").toExternalForm(), 
 			    80
