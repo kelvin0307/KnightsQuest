@@ -9,6 +9,7 @@ import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 
 import javafx.scene.paint.Color;
 
+
 /**
  * Een basis botsingsvakje voor de ridder dat helpt bij het detecteren van botsingen.
  * Dit is een abstracte klasse die andere botsingsvakjes kunnen uitbreiden.
@@ -26,7 +27,7 @@ public abstract class KnightCollisionBox extends RectangleEntity implements Coll
 	public KnightCollisionBox(Coordinate2D initialLocation, final KnightComposition parent, Size size) {
 		super(initialLocation, size);
 		this.parent = parent;
-		setFill(Color.RED);
+		setFill(Color.TRANSPARENT);
 	}
 
 }

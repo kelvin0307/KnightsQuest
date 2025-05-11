@@ -3,6 +3,7 @@ package org.example.entities.knight;
 import java.util.Set;
 
 import org.example.KnightsQuest;
+import org.example.entities.Coin;
 import org.example.entities.tiles.Tile;
 
 import com.github.hanyaeger.api.Coordinate2D;
@@ -121,5 +122,11 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
         double tileBottom = tile.getBoundingBox().getMaxY();
         setAnchorLocationY(tileBottom + 1);
         nullifySpeedInDirection(Direction.UP);
+    }
+    
+    public void handleCoinCollision(Coin coin) {
+    	coin.remove();
+    	coinsCollected ++;
+    	
     }
 }

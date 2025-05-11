@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class PredefinedTileSets {
 
-    public static List<Tile> hoofdPlatform() {
+    public static List<Tile> hoofdPlatform1() {
     	int[][] map = {
     			{50, 50, 0, 0, 50, 50, 50},
     			{50, 1, 2, 2, 50, 50, 50},
@@ -20,7 +20,7 @@ public class PredefinedTileSets {
     	return TileGenerator.generateTiles(map, 0, 800);
     }
     
-    public static List<Tile> eersteSprong(){
+    public static List<Tile> eersteSprong1(){
     	int[][] map = {
     			{0}
     };
@@ -28,7 +28,7 @@ public class PredefinedTileSets {
     }
     	
     	
-    public static List<Tile> tweedePlatform() {
+    public static List<Tile> tweedePlatform1() {
     	int[][] map = {
     			{50, 50, 0, 0, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50},
     			{50, 0, 2, 2, 50, 50, 50, 50, 50, 0, 0, 50, 50, 50, 50},
@@ -41,7 +41,7 @@ public class PredefinedTileSets {
     	return TileGenerator.generateTiles(map, 300, 550);
     }
   
-    public static List<Tile> derdePlatform(){
+    public static List<Tile> derdePlatform1(){
     	int[][] map = {
     			{3, 50, 5, 5, 50, 50, 50},
     			{50, 50, 50, 50, 50, 50, 0},

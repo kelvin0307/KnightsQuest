@@ -8,7 +8,7 @@ import com.github.hanyaeger.api.entities.impl.SpriteEntity;
 public class FirstFlag extends SpriteEntity implements Collider {
 
 	public FirstFlag(Coordinate2D initialLocation) {
-		super("images/greenworld/flag.png", initialLocation, new Size(100, 400));
+		super("images/greenworld/flag.png", initialLocation, new Size(500, 500));
 		// TODO Auto-generated constructor stub
 	}
 

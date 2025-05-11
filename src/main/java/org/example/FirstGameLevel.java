@@ -30,7 +30,7 @@ public class FirstGameLevel extends DynamicScene {
 	 */
 	@Override
 	public void setupScene() {
-		setBackgroundColor(Color.BLACK);
+		setBackgroundImage("images/greenworld/forest.png");
 	}
 
 	/**
@@ -42,10 +42,10 @@ public class FirstGameLevel extends DynamicScene {
 	 */
 	@Override
 	public void setupEntities() {
-		for (var tile : PredefinedTileSets.hoofdPlatform()) addEntity(tile);
-		for (var tile : PredefinedTileSets.tweedePlatform()) addEntity(tile);
-		for (var tile : PredefinedTileSets.eersteSprong()) addEntity(tile);
-		for (var tile : PredefinedTileSets.derdePlatform()) addEntity(tile);
+		for (var tile : PredefinedTileSets.hoofdPlatform1()) addEntity(tile);
+		for (var tile : PredefinedTileSets.tweedePlatform1()) addEntity(tile);
+		for (var tile : PredefinedTileSets.eersteSprong1()) addEntity(tile);
+		for (var tile : PredefinedTileSets.derdePlatform1()) addEntity(tile);
 
 		var coin = new Coin(new Coordinate2D(500, 550));
 		addEntity(coin);

@@ -2,6 +2,7 @@ package org.example.entities;
 
 import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
+import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.LoopingAnimation;
 import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
 
@@ -9,7 +10,7 @@ import com.github.hanyaeger.api.entities.impl.DynamicSpriteEntity;
  * Een munt die de speler kan verzamelen in het spel.
  * Heeft een draaiende animatie om zichtbaar te zijn voor de speler.
  */
-public class Coin extends DynamicSpriteEntity {
+public class Coin extends DynamicSpriteEntity implements Collider{
 	public int value;
 
 	/**
