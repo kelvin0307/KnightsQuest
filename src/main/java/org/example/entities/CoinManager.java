@@ -6,14 +6,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 /**
- * Een systeem dat ervoor zorgt muntweergave in een scene mogelijk is.
- * Wordt gebruikt in de compositie van Knight.
+ * Beheert het verzamelen en weergeven van munten in de game.
+ * Wordt gebruikt in compositie met {@code Knight}.
  */
+
 public class CoinManager {
     private int totalCoins;
     private int collectedCoins = 0;
     private final TextEntity display;
 
+    /**
+     * Maakt een {@code CoinManager} aan met het totaal aantal te verzamelen munten.
+     *
+     * @param totalCoins Het totaal aantal munten in het level.
+     */
     public CoinManager(int totalCoins) {
         this.totalCoins = totalCoins;
         double screenWidth = 1920; 
@@ -30,19 +36,29 @@ public class CoinManager {
         display.setFill(Color.WHITE);
     }
 
+    /**
+     * Verhoogt het aantal verzamelde munten met één en werkt de tekstweergave bij.
+     */
     public void addCoin() {
         collectedCoins++;
         updateDisplay();
     }
 
+    /**
+     * Geeft de {@code TextEntity} terug die de muntenweergave bevat.
+     *
+     * @return De tekstweergave van het aantal verzamelde munten.
+     */
     public TextEntity getDisplay() {
         return display;
     }
 
+    // Werkt de weergavetekst bij
     private void updateDisplay() {
         display.setText(formatText());
     }
 
+    // Formatteert de tekst als
     private String formatText() {
         return collectedCoins + " / " + totalCoins + " Coins";
     }

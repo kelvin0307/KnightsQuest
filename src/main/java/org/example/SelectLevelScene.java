@@ -9,18 +9,35 @@ import com.github.hanyaeger.api.Coordinate2D;
 import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.scenes.StaticScene;
 
+/**
+ * De scene waarin de speler een level kan kiezen.
+ * Bevat knoppen en tekst voor het starten van level 1 en level 2.
+ */
 public class SelectLevelScene extends StaticScene {
+
 	private KnightsQuest knightsQuest;
-	
+
+	/**
+	 * Maakt een nieuwe {@code SelectLevelScene} aan.
+	 *
+	 * @param knightsQuest De hoofdapplicatie van het spel.
+	 */
 	public SelectLevelScene(KnightsQuest knightsQuest) {
 		this.knightsQuest = knightsQuest;
 	}
+
+	/**
+	 * Stelt de achtergrondafbeelding en achtergrondmuziek van het levelselectiescherm in.
+	 */
 	@Override
 	public void setupScene() {
 		setBackgroundImage("images/titlescreen.jpg");
 		setBackgroundAudio("music/time_for_adventure.mp3");
 	}
 
+	/**
+	 * Voegt knoppen en tekst toe voor het selecteren van level 1 en level 2.
+	 */
 	@Override
 	public void setupEntities() {
 		var level1Button = new FirstLevelButton(new Coordinate2D(200, 200), knightsQuest);
