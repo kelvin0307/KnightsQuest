@@ -10,12 +10,15 @@ import com.github.hanyaeger.api.entities.Collided;
 import com.github.hanyaeger.api.entities.Collider;
 import com.github.hanyaeger.api.entities.impl.RectangleEntity;
 
+import javafx.scene.paint.Color;
+
 public class KnightCoinCollision extends RectangleEntity implements Collided{
 	private final KnightComposition knight;
 	
 	public KnightCoinCollision(Coordinate2D initialPosition, Size size, KnightComposition knight) {
 		super(initialPosition, size);
 		this.knight = knight;
+		setFill(Color.TRANSPARENT);
 	}
 
 	@Override

@@ -11,7 +11,7 @@ import java.util.List;
  * Basisklasse voor alle slijm-vijanden in het spel.
  * Handelt de basisbeweging, zwaartekracht en animaties voor slijmachtige vijanden.
  */
-public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian, Collided {
+public abstract class SlimeBase extends DynamicSpriteEntity implements Newtonian, Collided, Collider {
 
     public double speed;
     public int moveCounter = 1;

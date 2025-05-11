@@ -7,14 +7,17 @@ import org.example.entities.Coin;
 import org.example.entities.HealthManager;
 import org.example.entities.slime.SlimeBase;
 import org.example.entities.tiles.Tile;
+import org.example.entities.knight.KnightSlimeCollisionBox;
 
 import com.github.hanyaeger.api.Coordinate2D;
+import com.github.hanyaeger.api.Size;
 import com.github.hanyaeger.api.entities.Direction;
 import com.github.hanyaeger.api.entities.DynamicCompositeEntity;
 import com.github.hanyaeger.api.entities.Newtonian;
 import com.github.hanyaeger.api.entities.SceneBorderCrossingWatcher;
 import com.github.hanyaeger.api.scenes.SceneBorder;
 import com.github.hanyaeger.api.userinput.KeyListener;
+
 
 import javafx.scene.input.KeyCode;
 
@@ -71,6 +74,9 @@ public class KnightComposition extends DynamicCompositeEntity implements KeyList
 
         var slimeBox = new KnightSlimeCollisionBox(new Coordinate2D(22, 22), this, healthManager);
         addEntity(slimeBox);
+        
+        var coinCollision = new KnightCoinCollision(new Coordinate2D(30, 30), new Size(40, 40), this);
+        addEntity(coinCollision);
     }
 
     /**
